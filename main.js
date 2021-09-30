@@ -1,3 +1,5 @@
+let fichaLibro = document.createElement('div');
+
 function listaLibros() {
     const elegirLibro = Number(prompt('Digita el numero del libro te apetece leer' + '\n\n1. ' + libro1.titulo + '\n2. ' + libro2.titulo + '\n3. '+ libro3.titulo));
     if (elegirLibro === libro1.numeroProducto) {
@@ -20,7 +22,13 @@ class libro {
         this.paginas = paginas;
         this.sinopsis = sinopsis;
         this.numeroProducto = numeroProducto;
-        this.resumen = function() {alert(this.titulo + '\n' + 'de ' + this.autor + '\n\n' + this.sinopsis);}
+        this.resumen = function() {
+            fichaLibro.innerHTML = `<h1>${this.titulo}</h1>
+                                    <h2>${this.autor}</h2>
+                                    <h3>${this.paginas} páginas</h3>
+                                    <p>${this.sinopsis}</p>`;
+            document.body.appendChild(fichaLibro);
+            }
     }
 }
 
@@ -41,3 +49,4 @@ const librosDisponibles = libreria.filter((l) => l.disponibilidad==='Disponible'
 
 
 console.log(librosDisponibles);
+
